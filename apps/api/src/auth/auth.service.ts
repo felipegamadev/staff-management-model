@@ -8,7 +8,7 @@ export class AuthService {
     constructor(private readonly userService: UserService) {}
 
     public async register(registerDto: RegisterDto): Promise<User> {
-        const { name, email } = registerDto
-        return await this.userService.create(name, email)
+        const { name, email, password } = registerDto
+        return await this.userService.create(name, email, password)
     }
 }
