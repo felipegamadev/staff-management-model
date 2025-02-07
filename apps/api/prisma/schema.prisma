@@ -20,6 +20,18 @@ model User {
     password  String   @db.VarChar(255)
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    Token     Token[]
 
     @@map("users")
+}
+
+model Token {
+    id        Int      @id @default(autoincrement())
+    token     String   @unique
+    userId    Int
+    user      User     @relation(fields: [userId], references: [id])
+    createdAt DateTime @default(now())
+    expiresAt DateTime
+
+    @@map("tokens")
 }

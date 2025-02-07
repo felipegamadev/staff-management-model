@@ -13,11 +13,11 @@ export class AuthController {
         @Res() response: Response
     ): Promise<Response> {
         const statusCode = HttpStatus.CREATED
-        const user = await this.authService.register(registerDto)
+        const token = await this.authService.register(registerDto)
         return response.status(statusCode).json({
             message: 'Register successful',
             statusCode,
-            user
+            token: token.token
         })
     }
 }
