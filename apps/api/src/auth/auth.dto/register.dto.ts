@@ -4,7 +4,7 @@ import {
     IsString,
     IsStrongPassword
 } from 'class-validator'
-import { IsEmailUnique, IsPasswordMatching } from 'common/validators'
+import { IsEmailUnique, IsPasswordMatching } from '@/utils/validators'
 
 export class RegisterDto {
     @IsNotEmpty()

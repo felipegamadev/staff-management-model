@@ -3,13 +3,14 @@ import { AuthController } from './auth.controller'
 import { AuthService } from './auth.service'
 import { UserModule } from '@/user/user.module'
 import { TokenModule } from '@/token/token.module'
+import { CookieModule } from '@/cookie/cookie.module'
 import {
     IsEmailUniqueConstraint,
     IsPasswordMatchingConstraint
-} from 'common/validators'
+} from '@/utils/validators'
 
 @Module({
-    imports: [TokenModule, UserModule],
+    imports: [UserModule, TokenModule, CookieModule],
     controllers: [AuthController],
     providers: [
         AuthService,
