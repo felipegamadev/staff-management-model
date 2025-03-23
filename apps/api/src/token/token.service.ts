@@ -62,10 +62,12 @@ export class TokenService extends PassportStrategy(Strategy) {
         return token
     }
 
-    public async deleteMany(user: User): Promise<void> {
-        await this.prismaService.token.deleteMany({
-            where: { userId: user.id }
-        })
+    public async deleteMany(user: User | null): Promise<void> {
+        if (user != null) {
+            await this.prismaService.token.deleteMany({
+                where: { userId: user.id }
+            })
+        }
     }
 
     @Cron(CronExpression.EVERY_HOUR)
