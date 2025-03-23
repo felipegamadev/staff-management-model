@@ -17,7 +17,7 @@ export class AuthService {
     ) {}
 
     public async profile(request: Request): Promise<User | null> {
-        const user: User = request.user
+        const user = (request.user as User) ?? null
         return user
     }
 
@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     public async logout(request: Request, response: Response): Promise<void> {
-        const user: User = request.user
+        const user = (request.user as User) ?? null
         await this.tokenService.deleteMany(user)
         this.cookieService.delete(Constants.AUTH_TOKEN, response)
     }
